@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+     	<!--中南财经政法大学logo图 -->
+        <ImageView
+            android:id="@+id/imageLogo"
+            android:layout_width="380dp"
+            android:layout_height="200dip"
+            android:paddingRight="8dip"
+            android:src="@drawable/logo" />
+		<!--所有功能按钮 -->
+        <TableLayout
+            android:id="@+id/table1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:collapseColumns="2"
+            android:paddingLeft="50dip"
+            android:stretchColumns="1" >
+
+            <TableRow
+                android:id="@+id/trTable1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >	
+                
+                <ImageView
+                    android:id="@+id/friendsButton"
+                    android:layout_width="100dp"
+                    android:layout_height="40dip"
+                    android:paddingRight="30dip"
+                    android:src="@drawable/friendsbutton" />
+
+                <ImageView
+                    android:id="@+id/resourceButton"
+                    android:layout_width="100dp"
+                    android:layout_height="40dip"
+                    android:src="@drawable/resourcebutton" />
+            </TableRow>
+		</TableLayout>
+		
+	    <TableLayout
+	        android:id="@+id/table2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:collapseColumns="2"
+            android:paddingTop="30dip"
+            android:paddingLeft="50dip"
+            android:stretchColumns="1" >
+            <TableRow
+                android:id="@+id/trTable2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/thingsButton"
+                    android:layout_width="100dp"
+                    android:layout_height="40dip"
+                    android:paddingRight="30dip"
+                    android:src="@drawable/thingsbutton" />
+
+                <ImageView
+                    android:id="@+id/tipsButton"
+                    android:layout_width="100dp"
+                    android:layout_height="40dip"
+                    android:src="@drawable/tipsbutton" /> 
+            </TableRow>
+        </TableLayout>
+        
+	    <TableLayout
+	        android:id="@+id/table3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:collapseColumns="2"
+            android:paddingTop="30dip"
+            android:paddingLeft="120dip"
+            android:stretchColumns="1" >
+            <TableRow
+                android:id="@+id/trTable3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/questions"
+                    android:layout_width="100dp"
+                    android:layout_height="40dip"
+                    android:layout_gravity="center"
+                    android:src="@drawable/questions" />
+            </TableRow>
+        </TableLayout>
+
+    </LinearLayout>
+</LinearLayout>
+

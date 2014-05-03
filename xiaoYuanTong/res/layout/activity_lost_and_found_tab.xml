@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TabHost android:id="@android:id/tabhost" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout 
+        android:orientation="vertical" 
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent"
+        android:background="@drawable/background">
+        
+        <FrameLayout 
+            android:id="@android:id/tabcontent" 
+            android:layout_width="fill_parent" 
+            android:layout_height="0.0dip" 
+            android:layout_weight="1.0" />
+        
+        <TabWidget 
+            android:id="@android:id/tabs" 
+            android:visibility="gone" 
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content" 
+            android:layout_weight="0.0" />
+        	
+            <RadioGroup 
+                android:gravity="center_vertical" 
+                android:layout_gravity="bottom" 
+                android:orientation="horizontal" 
+                android:id="@id/main_radio" 
+                android:background="@drawable/maintab_toolbar_bg" 
+                android:layout_width="fill_parent" 
+                android:layout_height="wrap_content">
+                <!--回主界面 -->
+                <RadioButton  
+                    android:id="@+id/main" 
+                    android:layout_marginTop="2.0dip" 
+                    android:text="@string/main_main" 
+                    android:drawableTop="@drawable/main"
+                    style="@style/main_tab_bottom" />
+                <!--总信息-->
+                <RadioButton  
+                    android:id="@+id/allLandF" 
+                    android:layout_marginTop="2.0dip" 
+                    android:text="@string/allLandF" 
+                    android:drawableTop="@drawable/news" 
+                    style="@style/main_tab_bottom" />
+                <!--写失物招领信息-->
+                <RadioButton  
+                    android:id="@+id/writeLandF" 
+                    android:layout_marginTop="2.0dip" 
+                    android:text="@string/writeLandF"
+                    android:drawableTop="@drawable/news"
+                    style="@style/main_tab_bottom" />
+                <!--个人所有发表的信息-->
+                <RadioButton  
+                    android:id="@+id/myLandF" 
+                    android:layout_marginTop="2.0dip" 
+                    android:text="@string/myLandF" 
+                    android:drawableTop="@drawable/news"
+                    style="@style/main_tab_bottom" />
+            </RadioGroup>
+    </LinearLayout>
+</TabHost>

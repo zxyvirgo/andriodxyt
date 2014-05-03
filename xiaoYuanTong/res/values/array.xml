@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sex">
+       <item>女</item>
+       <item>男</item>
+    </string-array>
+    <string-array name="academy">
+       <item>学院</item>
+    </string-array>
+    <string-array name="major">
+       <item>专业</item>
+    </string-array>
+    <string-array name="grade">
+       <item>2010</item>
+       <item>2011</item>
+       <item>2013</item>
+       <item>2014</item>
+    </string-array>
+    <string-array name="graduatePlan">
+       <item>出国</item>
+       <item>考研</item>
+       <item>找工作</item>
+       <item>出国找工作</item>
+       <item>考研找工作</item>
+       <item>出国考研找工作</item>
+    </string-array>
+    <string-array name="oneClass">
+       <item>专业课</item>
+       <item>非专业课</item>
+       <item>其他</item>
+    </string-array>
+    <string-array name="twoClass1">
+       <item>学院</item>
+    </string-array>
+    <string-array name="twoClass2">
+       <item>公共课</item>
+    </string-array>
+    <string-array name="twoClass3">
+       <item>通时选修</item>
+       <item>考研</item>
+       <item>出国</item>
+       <item>公务员</item>
+       <item>英语</item>
+       <item>考证</item>
+       <item>考博</item>
+    </string-array>
+    <string-array name="threeClass">
+       <item>学院对应的专业</item>
+    </string-array>
+    <string-array name="fourClass">
+       <item>大一</item>
+       <item>大二</item>
+       <item>大三</item>
+       <item>大四</item>
+    </string-array>
+    <string-array name="LandFTip">
+       <item>找物</item>
+       <item>招物</item>
+    </string-array>
+    <string-array name="ThingsType">
+       <item>校园卡</item>
+       <item>钱包</item>
+       <item>书包</item>
+       <item>其他</item>
+    </string-array>
+</resources>

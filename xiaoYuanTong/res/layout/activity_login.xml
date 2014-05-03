@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+     	<!--中南财经政法大学logo图 -->
+        <ImageView
+            android:id="@+id/imageLogo"
+            android:layout_width="380dp"
+            android:layout_height="200dip"
+            android:paddingRight="8dip"
+            android:src="@drawable/logo" />
+
+		<!--校园通 -->
+        <TextView
+            android:id="@+id/textLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dip"
+            android:text="@string/textLogo"
+            android:textSize="50sp"
+            android:layout_gravity="center"
+            android:textColor="#000000" />
+        
+        <TableLayout
+            android:id="@+id/table1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dip"
+            android:collapseColumns="4"
+            android:stretchColumns="1" >      
+            <TableRow
+                android:id="@+id/trTable1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+				<!--学号-->
+                <TextView
+                    android:id="@+id/tvUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dip"
+                    android:text="@string/studentID"
+                    android:textColor="#000000" />
+                <EditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <requestFocus />
+            </TableRow>
+            
+            <TableRow
+                android:id="@+id/trTable2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+				<!--密码-->
+                <TextView
+                    android:id="@+id/tvPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dip"
+                    android:text="@string/password"
+                    android:textColor="#000000" />
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPassword" >
+		        <requestFocus />
+                </EditText>
+            </TableRow>
+        </TableLayout>
+        
+        <TableLayout
+            android:id="@+id/tableLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dip"
+            android:orientation="horizontal" >
+            <TableRow
+                android:id="@+id/trTable3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                <!--记住密码-->
+                <CheckBox
+                    android:id="@+id/remember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dip"
+                    android:text="@string/remember"
+                    android:textColor="#000000" />
+                 <!--自动登录-->
+                <CheckBox
+                    android:id="@+id/autoLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/autoLogin"
+                    android:textColor="#000000" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/login"
+        android:layout_width="180dip"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dip"
+        android:text="@string/login" />
+</LinearLayout>
+

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout  
+	xmlns:android="http://schemas.android.com/apk/res/android"  
+	android:id="@+id/layout"  
+	android:background="@drawable/background"
+	android:orientation="vertical"  
+	android:layout_width="fill_parent"  
+	android:layout_height="fill_parent">  
+  	<!-- 最上面一行 -->
+	<RelativeLayout  
+		android:layout_width="fill_parent"  
+		android:layout_height="wrap_content"  
+		android:layout_margin="3px">    
+		<!-- 用于显示写消息图标 -->
+		<ImageButton  
+			android:id="@+id/writeBtn"  
+			android:layout_width="50px"  
+			android:layout_height="50px"  
+			android:layout_toLeftOf="@+id/refreshBtn"  
+			android:background="@drawable/write" />  
+		<!-- 用于显示刷新图标 -->
+		<ImageButton  
+			android:id="@+id/refreshBtn"  
+			android:layout_width="50px"  
+			android:layout_height="50px"  
+			android:layout_alignParentRight="true"  
+			android:layout_marginLeft="12px"  
+			android:background="@drawable/refresh" />
+	</RelativeLayout>  
+	<!--个人动态还是好友动态 -->
+	<TableLayout
+            android:id="@+id/table"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dip">
+
+            <TableRow
+                android:id="@+id/trTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >	
+                
+                <Button
+		    		android:id="@+id/friends_news_btn"
+		    		android:layout_width="wrap_content"
+		    		android:layout_height="wrap_content"
+		    		android:layout_alignParentLeft="true"
+		    		android:layout_centerVertical="true"
+		    		android:layout_marginLeft="25dp"
+		    		android:text="@string/friends_news"  />
+                <Button
+                    android:id="@+id/personnal_news_btn"
+		    		android:layout_width="wrap_content"
+		    		android:layout_height="wrap_content"
+		    		android:layout_alignParentLeft="true"
+		    		android:layout_centerVertical="true"
+		    		android:layout_marginLeft="25dp"
+		    		android:text="@string/personnal_news"   />
+            </TableRow>
+	</TableLayout>
+  	<!-- 黑色分隔线 -->
+	<LinearLayout  
+		android:layout_width="fill_parent"  
+		android:layout_height="1px"  
+		android:background="#000000" 
+		android:orientation="vertical"/>  
+		<!-- 消息显示主体 -->
+		<RelativeLayout  
+			android:layout_width="fill_parent"  
+			android:layout_height="fill_parent">  
+	  	<!-- 消息列表 -->
+		<ListView 
+		    android:layout_width="wrap_content" 
+          	android:layout_height="wrap_content" 
+         	android:id="@+id/ListView01" />
+		</RelativeLayout>  
+</LinearLayout>  

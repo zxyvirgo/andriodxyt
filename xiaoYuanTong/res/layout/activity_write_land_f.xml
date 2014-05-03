@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+    <TableLayout
+        android:id="@+id/table1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:collapseColumns="2"
+        android:stretchColumns="1" >
+           <TableRow
+               android:id="@+id/trTable1"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" >
+               
+               <!--标签：找物还是招物-->
+               <TextView
+                 android:id="@+id/tvLandFTip"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:paddingLeft="10dip"
+                 android:text="@string/LandFTip"
+                 android:textColor="#000000" />
+                <Spinner
+   					android:id="@+id/LandFTip"
+   					android:layout_width="wrap_content"
+   					android:layout_height="wrap_content"
+   					android:entries="@array/LandFTip"
+   					android:prompt="@string/LandFTip" />
+            </TableRow>
+		</TableLayout>
+		
+	    <TableLayout
+	        android:id="@+id/table2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:collapseColumns="2"
+            android:paddingTop="30dip"
+            android:stretchColumns="1" >
+            <TableRow
+                android:id="@+id/trTable2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+               <!--物品类别-->
+               <TextView
+                 android:id="@+id/tvThingsType"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:paddingLeft="10dip"
+                 android:text="@string/ThingsType"
+                 android:textColor="#000000" />
+                <Spinner
+   					android:id="@+id/ThingsType"
+   					android:layout_width="wrap_content"
+   					android:layout_height="wrap_content"
+   					android:entries="@array/ThingsType"
+   					android:prompt="@string/ThingsType" /> 
+            </TableRow>
+        </TableLayout>
+        
+	    <TableLayout
+	        android:id="@+id/table3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:collapseColumns="2"
+            android:paddingTop="30dip"
+            android:stretchColumns="1" >
+            <TableRow
+                android:id="@+id/trTable3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <!--失物招领消息描述-->
+                <TextView
+                 	android:id="@+id/tvDescribe"
+                 	android:layout_width="wrap_content"
+                 	android:layout_height="wrap_content"
+                 	android:paddingLeft="10dip"
+                 	android:text="@string/Describe"
+                 	android:textColor="#000000" />
+              	<EditText
+	        	 	android:id="@+id/etDescribe"
+	       		    android:layout_width="match_parent"
+	        		android:layout_height="wrap_content"
+	        		android:ems="10" />
+	         </TableRow>
+        </TableLayout>
+        
+	    <TableLayout
+	        android:id="@+id/table4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:collapseColumns="2"
+            android:paddingTop="30dip"
+            android:stretchColumns="1" >
+            <TableRow
+                android:id="@+id/trTable4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <!--失物招领发表者QQ-->
+               <TextView
+                 android:id="@+id/tvQQ"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:paddingLeft="10dip"
+                 android:text="@string/QQ"
+                 android:textColor="#000000" />
+                <EditText
+	        		android:id="@+id/etQQ"
+	       		    android:layout_width="match_parent"
+	        		android:layout_height="wrap_content"
+	        		android:ems="10" />
+	         </TableRow>
+        </TableLayout>
+        
+	     <TableLayout
+	        android:id="@+id/table5"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:collapseColumns="2"
+            android:paddingTop="30dip"
+            android:stretchColumns="1" >
+            <TableRow
+                android:id="@+id/trTable5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <!--失物招领发表者手机号-->
+               <TextView
+                 android:id="@+id/tvPhone"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:paddingLeft="10dip"
+                 android:text="@string/Phone"
+                 android:textColor="#000000" />
+                <EditText
+	        		android:id="@+id/etPhone"
+	       		    android:layout_width="match_parent"
+	        		android:layout_height="wrap_content"
+	        		android:ems="10" />
+	         </TableRow>
+        </TableLayout>
+
+	      <TableLayout
+	        android:id="@+id/table6"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:collapseColumns="2"
+            android:paddingTop="30dip"
+            android:stretchColumns="1" >
+            <TableRow
+                android:id="@+id/trTable6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <!--提交-->
+                <Button
+        			android:id="@+id/submit"
+        			android:layout_width="180dip"
+        			android:layout_height="wrap_content"
+       				android:layout_marginLeft="80dip"
+        			android:text="@string/submit" />  
+	         </TableRow>
+        </TableLayout>
+</LinearLayout>
+
