@@ -30,7 +30,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemClickListener;
-
+/*
+ * 话题消息
+ */
 public class TopicActivity extends Activity {
 	
 	private RequestQueue requestQueue; // 定义请求队列
@@ -136,6 +138,7 @@ public class TopicActivity extends Activity {
 							//String groupId = "";
 							String massage = "";
 							String createtime = "";
+							String topicname = "";
 							list = (ListView) findViewById(R.id.ListView01);
 							listItem.clear();
 							
@@ -146,11 +149,12 @@ public class TopicActivity extends Activity {
 								JSONObject object = json.getJSONObject(j);
 								createtime = object.opt("createtime").toString();
 								massage = object.opt("massage").toString();
+								topicname = object.opt("topicname").toString();
 								Log.e("createtime", createtime);
 								Log.e("massage", massage);
 							// 
 							     map.put("ItemImage", R.drawable.friends);//图像资源的ID
-							     map.put("ItemTitle", createtime);
+							     map.put("ItemTitle", topicname+":"+createtime);
 							     map.put("ItemText", massage);
 							     listItem.add(map);
 								 listItemAdapter.notifyDataSetChanged();

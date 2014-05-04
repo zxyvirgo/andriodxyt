@@ -116,7 +116,7 @@ public class MyLAndFActivity extends Activity {
 	private void getJson() {
 		// ��ʼ��volley
 
-		String url = "http://192.168.20.1:8080/xiaoyuantong/dynamicAction!messageList.action";
+		String url = "http://192.168.20.1:8080/xiaoyuantong/findandlostAction!getMyFindAndLost.action?userid=01";
 
 		// ������ʹ��volley
 		
@@ -131,11 +131,13 @@ public class MyLAndFActivity extends Activity {
 							// ���?�ص�JSON���
 							Log.e("bbb", response.toString());
 							JSONArray json = null;
-							json = response.getJSONArray("dynamic");
+							json = response.getJSONArray("findandlost");
 						//	Log.e("date", json.toString());
 							//String groupId = "";
-							String massage = "";
-							String createtime = "";
+							String category = "";
+							String content = "";
+							String state = "";
+							String flag = "";
 							list = (ListView) findViewById(R.id.ListView01);
 							listItem.clear();
 							
@@ -144,14 +146,16 @@ public class MyLAndFActivity extends Activity {
 								//获取一列一列的对象
 								HashMap<String, Object> map = new HashMap<String, Object>();
 								JSONObject object = json.getJSONObject(j);
-								createtime = object.opt("createtime").toString();
-								massage = object.opt("massage").toString();
-								Log.e("createtime", createtime);
-								Log.e("massage", massage);
+								category = object.opt("category").toString();
+								content = object.opt("content").toString();
+								state = object.opt("state").toString();
+								flag = object.opt("flag").toString();
+								Log.e("category", category);
+								Log.e("massage",content);
 							// 
 							     map.put("ItemImage", R.drawable.friends);//图像资源的ID
-							     map.put("ItemTitle", createtime);
-							     map.put("ItemText", massage);
+							     map.put("ItemTitle", category+":"+state+":"+flag);
+							     map.put("ItemText", content);
 							     listItem.add(map);
 								 listItemAdapter.notifyDataSetChanged();
 							//	 listItemAdapter.notifyDataSetInvalidated();

@@ -30,7 +30,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemClickListener;
-
+/*
+ * 所有的的失物招领信息
+ */
 public class AllLandFActivity extends Activity {
 	
 	private RequestQueue requestQueue; // 定义请求队列
@@ -116,7 +118,7 @@ public class AllLandFActivity extends Activity {
 	private void getJson() {
 		// ��ʼ��volley
 
-		String url = "http://192.168.20.1:8080/xiaoyuantong/dynamicAction!messageList.action";
+		String url = "http://192.168.20.1:8080/xiaoyuantong/findandlostAction!getFindAndLostAll.action";
 
 		// ������ʹ��volley
 		
@@ -131,11 +133,12 @@ public class AllLandFActivity extends Activity {
 							// ���?�ص�JSON���
 							Log.e("bbb", response.toString());
 							JSONArray json = null;
-							json = response.getJSONArray("dynamic");
+							json = response.getJSONArray("findandlost");
 						//	Log.e("date", json.toString());
 							//String groupId = "";
-							String massage = "";
-							String createtime = "";
+							String category = "";
+							String content = "";
+							String name = "";
 							list = (ListView) findViewById(R.id.ListView01);
 							listItem.clear();
 							
@@ -144,14 +147,15 @@ public class AllLandFActivity extends Activity {
 								//获取一列一列的对象
 								HashMap<String, Object> map = new HashMap<String, Object>();
 								JSONObject object = json.getJSONObject(j);
-								createtime = object.opt("createtime").toString();
-								massage = object.opt("massage").toString();
-								Log.e("createtime", createtime);
-								Log.e("massage", massage);
+								category = object.opt("category").toString();
+								content = object.opt("content").toString();
+								name = object.opt("name").toString();
+								Log.e("category", category);
+								Log.e("massage",content);
 							// 
 							     map.put("ItemImage", R.drawable.friends);//图像资源的ID
-							     map.put("ItemTitle", createtime);
-							     map.put("ItemText", massage);
+							     map.put("ItemTitle", category+":"+name);
+							     map.put("ItemText", content);
 							     listItem.add(map);
 								 listItemAdapter.notifyDataSetChanged();
 							//	 listItemAdapter.notifyDataSetInvalidated();

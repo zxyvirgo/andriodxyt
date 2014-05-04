@@ -34,16 +34,16 @@ public class LoginActivity extends Activity {
     	autoLogin = (CheckBox) findViewById(R.id.autoLogin); 
     	login = (Button) findViewById(R.id.login);
     	sp = getSharedPreferences("users", MODE_WORLD_READABLE); 
-    	// ´ÓSharedPreferencesÀï±ßÈ¡³ö ¼Ç×¡ÃÜÂëµÄ×´Ì¬ 
+    	// ä»SharedPreferencesé‡Œè¾¹å–å‡º è®°ä½å¯†ç çš„çŠ¶æ€ 
     	if (sp.getBoolean("ISCHECK", false)) { 
-    	// ½«¼Ç×¡ÃÜÂëÉèÖÃÎª±»µã»÷×´Ì¬ 
+    	// å°†è®°ä½å¯†ç è®¾ç½®ä¸ºè¢«ç‚¹å‡»çŠ¶æ€ 
     	remberPass.setChecked(true); 
-    	// È»ºó½«Öµ¸³Öµ¸øEditText 
+    	// ç„¶åå°†å€¼èµ‹å€¼ç»™EditText 
     	username.setText(sp.getString("oa_name", "")); 
     	pass.setText(sp.getString("oa_pass", ""));
-    	// »ñÈ¡×Ô¶¯µÇÂ¼°´Å¥µÄ×´Ì¬ 
+    	// è·å–è‡ªåŠ¨ç™»å½•æŒ‰é’®çš„çŠ¶æ€ 
     	if (sp.getBoolean("AUTO_ISCHECK", false)) { 
-    	// ÉèÖÃ×Ô¶¯µÇÂ¼±»µã»÷ È»ºóÊµÏÖÌø×ª 
+    	// è®¾ç½®è‡ªåŠ¨ç™»å½•è¢«ç‚¹å‡» ç„¶åå®ç°è·³è½¬ 
     	autoLogin.setChecked(true); 
     	Intent intent1 = new Intent(LoginActivity.this, 
     	MainActivity.class); 
@@ -57,7 +57,7 @@ public class LoginActivity extends Activity {
     	LoginMain(); 
     	} 
     	}); 
-    	// ½«µã»÷µÄcheckBOx´æÈëµ½usersÖĞ 
+    	// å°†ç‚¹å‡»çš„checkBOxå­˜å…¥åˆ°usersä¸­ 
     	remberPass.setOnClickListener(new OnClickListener() { 
 
     	@Override 
@@ -67,7 +67,7 @@ public class LoginActivity extends Activity {
     	ed.commit(); 
     	} 
     	}); 
-    	// ÉèÖÃ×Ô¶¯µÇÂ¼Ä¬ÈÏÎª²»µã»÷ 
+    	// è®¾ç½®è‡ªåŠ¨ç™»å½•é»˜è®¤ä¸ºä¸ç‚¹å‡» 
     	Boolean value1 = sp.getBoolean("AUTO_ISCHECK", false); 
     	autoLogin.setChecked(value1); 
     	autoLogin.setOnClickListener(new OnClickListener() { 
@@ -79,23 +79,23 @@ public class LoginActivity extends Activity {
     	ed.commit(); 
     	} 
     	}); 
-    	// Èç¹û¼Ç×¡ÃÜÂë¸ú×Ô¶¯µÇÂ¼¶¼±»Ñ¡ÖĞ¾ÍÑ¡ÔñµÇÂ¼Ìø×ª 
+    	// å¦‚æœè®°ä½å¯†ç è·Ÿè‡ªåŠ¨ç™»å½•éƒ½è¢«é€‰ä¸­å°±é€‰æ‹©ç™»å½•è·³è½¬ 
     	if (remberPass.isChecked() && autoLogin.isChecked()) { 
     	LoginMain(); 
     	} 
     }
 
     protected void LoginMain() { 
-		// ½«ĞÅÏ¢´æÈëµ½usersÀïÃæ 
+		// å°†ä¿¡æ¯å­˜å…¥åˆ°usersé‡Œé¢ 
 		ed.putString("oa_name", username.getText().toString()); 
 		ed.putString("oa_pass", pass.getText().toString()); 
 		ed.commit(); 
 		if (TextUtils.isEmpty(username.getText().toString())) { 
-		Toast.makeText(this, "ÇëÊäÈëÓÃ»§Ãû", Toast.LENGTH_LONG).show(); 
+		Toast.makeText(this, "è¯·è¾“å…¥ç”¨æˆ·å", Toast.LENGTH_LONG).show(); 
 		return; 
 		} 
 		if (TextUtils.isEmpty(pass.getText().toString())) { 
-		Toast.makeText(this, "ÇëÊäÈëÃÜÂë", Toast.LENGTH_LONG).show(); 
+		Toast.makeText(this, "è¯·è¾“å…¥å¯†ç ", Toast.LENGTH_LONG).show(); 
 		return; 
 		} 
 		Intent intent = new Intent(LoginActivity.this, MainActivity.class); 

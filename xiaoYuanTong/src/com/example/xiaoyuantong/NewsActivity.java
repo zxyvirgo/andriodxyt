@@ -31,7 +31,9 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 
-
+/*
+ * 动态
+ */
 public class NewsActivity extends Activity {
 	
 	private RequestQueue requestQueue; // 定义请求队列
@@ -117,7 +119,7 @@ public class NewsActivity extends Activity {
 	private void getJson() {
 		// ��ʼ��volley
 
-		String url = "http://192.168.20.1:8080/xiaoyuantong/dynamicAction!messageList.action";
+		String url = "http://192.168.20.1:8080/xiaoyuantong/dynamicAction!dynamicList.action";
 
 		// ������ʹ��volley
 		
@@ -137,6 +139,7 @@ public class NewsActivity extends Activity {
 							//String groupId = "";
 							String massage = "";
 							String createtime = "";
+							String username = "";
 							list = (ListView) findViewById(R.id.ListView01);
 							listItem.clear();
 							
@@ -147,11 +150,12 @@ public class NewsActivity extends Activity {
 								JSONObject object = json.getJSONObject(j);
 								createtime = object.opt("createtime").toString();
 								massage = object.opt("massage").toString();
+								username = object.opt("username").toString();
 								Log.e("createtime", createtime);
 								Log.e("massage", massage);
 							// 
 							     map.put("ItemImage", R.drawable.friends);//图像资源的ID
-							     map.put("ItemTitle", createtime);
+							     map.put("ItemTitle", username+":"+createtime);
 							     map.put("ItemText", massage);
 							     listItem.add(map);
 								 listItemAdapter.notifyDataSetChanged();
