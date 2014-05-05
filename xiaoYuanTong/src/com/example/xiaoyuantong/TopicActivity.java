@@ -154,7 +154,7 @@ public class TopicActivity extends Activity {
 								Log.e("massage", massage);
 							// 
 							     map.put("ItemImage", R.drawable.friends);//图像资源的ID
-							     map.put("ItemTitle", topicname+":"+createtime);
+							     map.put("ItemTitle","#"+topicname+"#:"+createtime);
 							     map.put("ItemText", massage);
 							     listItem.add(map);
 								 listItemAdapter.notifyDataSetChanged();

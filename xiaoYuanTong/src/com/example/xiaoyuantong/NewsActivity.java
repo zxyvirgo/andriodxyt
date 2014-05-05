@@ -2,6 +2,8 @@ package com.example.xiaoyuantong;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,10 +26,12 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ImageButton;
 import android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -35,20 +39,32 @@ import android.widget.AdapterView.OnItemClickListener;
  * 动态
  */
 public class NewsActivity extends Activity {
-	
+	private Intent writeNewsIntent;
 	private RequestQueue requestQueue; // 定义请求队列
 	ListView list;
 	ArrayList<HashMap<String, Object>> listItem;
 	SimpleAdapter listItemAdapter;
 	
+	ImageButton writeBtn;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
+        this.writeNewsIntent = new Intent(this,WriteNewsActivity.class);
         //动态请求
         requestQueue = Volley.newRequestQueue(this); // 获取请求
 		getJson();// 向后台发送请求，获取数据
 		
+
+        writeBtn = (ImageButton) findViewById(R.id.writeBtn);
+
+        writeBtn.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				startActivity(writeNewsIntent);
+			}			
+		});
         //绑定Layout里面的ListView
         list = (ListView) findViewById(R.id.ListView01);
         

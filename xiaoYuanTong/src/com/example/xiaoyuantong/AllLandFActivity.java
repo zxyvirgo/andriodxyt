@@ -153,9 +153,11 @@ public class AllLandFActivity extends Activity {
 								Log.e("category", category);
 								Log.e("massage",content);
 							// 
+							//	if (!category.equals("")&&content.equals("")&&name.equals("")){
 							     map.put("ItemImage", R.drawable.friends);//图像资源的ID
 							     map.put("ItemTitle", category+":"+name);
 							     map.put("ItemText", content);
+						//		}
 							     listItem.add(map);
 								 listItemAdapter.notifyDataSetChanged();
 							//	 listItemAdapter.notifyDataSetInvalidated();

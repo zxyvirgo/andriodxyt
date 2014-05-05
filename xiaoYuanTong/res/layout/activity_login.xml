@@ -42,17 +42,20 @@
                 android:layout_height="wrap_content" >
 				<!--学号-->
                 <TextView
-                    android:id="@+id/tvUsername"
+                    android:id="@+id/xuehao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dip"
                     android:text="@string/studentID"
                     android:textColor="#000000" />
                 <EditText
-                    android:id="@+id/etUsername"
+                    android:id="@+id/number"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content" 
+                    android:hint="请输入学号"
+                    android:inputType="text"/>
                 <requestFocus />
+
             </TableRow>
             
             <TableRow
@@ -61,19 +64,18 @@
                 android:layout_height="wrap_content" >
 				<!--密码-->
                 <TextView
-                    android:id="@+id/tvPassword"
+                    android:id="@+id/mima"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dip"
                     android:text="@string/password"
                     android:textColor="#000000" />
                 <EditText
-                    android:id="@+id/etPassword"
+                    android:id="@+id/password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
+                    android:hint="请输入密码"
                     android:inputType="textPassword" >
-		        <requestFocus />
                 </EditText>
             </TableRow>
         </TableLayout>
@@ -105,13 +107,33 @@
                     android:textColor="#000000" />
             </TableRow>
         </TableLayout>
+        <TableLayout
+            android:id="@+id/tableLayout3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dip"
+            android:orientation="horizontal" >
+            <TableRow
+                android:id="@+id/trTable4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                <!-- 登录按钮 -->
+    			<Button
+       				android:id="@+id/login"
+        			android:layout_width="100dip"
+        			android:layout_height="wrap_content"
+        			android:layout_marginLeft="50dip"
+        			android:text="@string/login" />
+				<!-- 取消按钮 -->
+    			<Button
+        			android:id="@+id/quit"
+        			android:layout_width="100dip"
+        			android:layout_height="wrap_content"
+        			android:layout_marginLeft="50dip"
+        			android:text="@string/quit" />
+    			</TableRow>
+        </TableLayout>
     </LinearLayout>
-    
-    <Button
-        android:id="@+id/login"
-        android:layout_width="180dip"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="80dip"
-        android:text="@string/login" />
+	
 </LinearLayout>
 

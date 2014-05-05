@@ -2,6 +2,8 @@ package com.example.xiaoyuantong;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.SharedPreferences;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -115,8 +117,16 @@ public class MyLAndFActivity extends Activity {
 	
 	private void getJson() {
 		// ��ʼ��volley
-
-		String url = "http://192.168.20.1:8080/xiaoyuantong/findandlostAction!getMyFindAndLost.action?userid=01";
+		SharedPreferences nu=getSharedPreferences("number",0);//login是存储文件  
+		String number=nu.getString("studentId", "");
+	//	System.out.println(number+"!");
+		Log.v("cola","data="+number);
+		
+		//sp = getSharedPreferences("users",Context.MODE_WORLD_READABLE); 
+	//	Context ctx = LoginActivity.this;
+	//	SharedPreferences sp = ctx.getSharedPreferences("SP", MODE_PRIVATE);
+		String userid =number;
+		String url = "http://192.168.20.1:8080/xiaoyuantong/findandlostAction!getMyFindAndLost.action?userid="+userid;
 
 		// ������ʹ��volley
 		

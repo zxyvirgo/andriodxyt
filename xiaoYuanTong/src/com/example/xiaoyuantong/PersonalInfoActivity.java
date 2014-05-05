@@ -1,42 +1,16 @@
 package com.example.xiaoyuantong;
 
-
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.protocol.HTTP;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.view.View;
 import android.util.Log;
+import java.util.regex.*;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,14 +27,21 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 public class PersonalInfoActivity extends Activity {
-	
+	private Intent intent;
 	private EditText userNameEditText;
 	private String userName;
 	private Spinner sexSpinner;
+	private String sex;
 	//private ArrayAdapter sexAdapter;
 	private Spinner academySpinner;
+	private String academy;
+	//private ArrayAdapter academyAdapter;
 	private Spinner majorSpinner;
+	private String major;
+	//private ArrayAdapter majorAdapter;
 	private Spinner gradeSpinner;
+	private String grade;
+	//private ArrayAdapter gradeAdapter;
 	private EditText emailEditText;
 	private String Email;
 	private EditText phoneNumberEditText;
@@ -70,21 +51,18 @@ public class PersonalInfoActivity extends Activity {
 	private EditText QQEditText;
 	private String QQ;
 	private Spinner graduatePlanSpinner;
+	private String graduatePlan;
+	//private ArrayAdapter graduatePlanAdapter;
 	private Button reset;
 	private Button register;
-	
-	private String serverIp = "192.168.1.79";
-	private String serverPort = "8080";
-	private Bundle bundle;
-	private String httpStr;
-	private String postStr;
-	private String questStr;
 	
 	private RequestQueue requestQueue ;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_personal_info);
+		
+		this.intent = new Intent(this,MainActivity.class);
 
 		userNameEditText=(EditText)findViewById(R.id.etUserName);
 		sexSpinner = (Spinner) findViewById(R.id.sex);
@@ -93,13 +71,21 @@ public class PersonalInfoActivity extends Activity {
 		//将sexAdapter 添加到spinner中
 		//sexSpinner.setAdapter(sexAdapter);
 		academySpinner = (Spinner) findViewById(R.id.academy);
+		//academyAdapter = ArrayAdapter.createFromResource(this, R.array.academy, android.R.layout.simple_spinner_item);
+		//academySpinner.setAdapter(academyAdapter);
 		majorSpinner = (Spinner) findViewById(R.id.major);
+		//majorAdapter = ArrayAdapter.createFromResource(this, R.array.major, android.R.layout.simple_spinner_item);
+		//majorSpinner.setAdapter(majorAdapter);
 		gradeSpinner = (Spinner) findViewById(R.id.grade);
+		//gradeAdapter = ArrayAdapter.createFromResource(this, R.array.grade, android.R.layout.simple_spinner_item);
+		//gradeSpinner.setAdapter(gradeAdapter);
 		emailEditText=(EditText)findViewById(R.id.etEmail);
 		phoneNumberEditText=(EditText)findViewById(R.id.etPhoneNumber);
 		homeTownEditText=(EditText)findViewById(R.id.etHomeTown);
 		QQEditText=(EditText)findViewById(R.id.etQQ);
 		graduatePlanSpinner = (Spinner) findViewById(R.id.graduatePlan);
+		//graduatePlanAdapter = ArrayAdapter.createFromResource(this, R.array.graduatePlan, android.R.layout.simple_spinner_item);
+		//graduatePlanSpinner.setAdapter(graduatePlanAdapter);
 		reset = (Button) findViewById(R.id.reset);
 		register = (Button) findViewById(R.id.register);
 		
@@ -135,15 +121,55 @@ public class PersonalInfoActivity extends Activity {
 		register.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (registerIsSuccsee()) {
+				/*ifRegisterSuccess();
+				if (flag) {
 					register();
+				}*/
+				if (ifRegisterSuccess()) {
+					post();
+					startActivity(intent);
 				}
-				
 			}
 
 		});
 		
-		init();
+        //(处理学院的显示) 
+        //将可选内容与ArrayAdapter的连接(从资源数组文件中获取数据) 
+        ArrayAdapter<CharSequence> adapter =  ArrayAdapter.createFromResource(this, R.array.academy, android.R.layout.simple_spinner_item); 
+        //new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, provinces); 
+        //设置下拉列表的风格 
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); 
+        //将数据绑定到Spinner视图上 
+        academySpinner.setAdapter(adapter);
+        //添加条目被选中监听器 
+        academySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { 
+            @Override 
+            public void onItemSelected(AdapterView<?> parent, View view,int position, long id) { 
+                //parent既是province对象 
+                Spinner spinner = (Spinner)parent; 
+                String pro =  (String)spinner.getItemAtPosition(position); 
+
+                ArrayAdapter<CharSequence> majorAdapter = ArrayAdapter.createFromResource (PersonalInfoActivity.this, R.array.academy, android.R.layout.simple_spinner_item); 
+                 //new  ArrayAdapter<CharSequence> 
+                      //           (MainActivity.this,android.R.layout.simple_spinner_item, cities); 
+                //获取所在省含有哪些市(从资源数组文件中获取数据) 
+                if(pro.equals("信息与安全工程学院")){ 
+                	majorAdapter = ArrayAdapter.createFromResource (PersonalInfoActivity.this, R.array.xinxi, android.R.layout.simple_spinner_item); 
+                }else if(pro.equals("会计学院")){ 
+                	majorAdapter = ArrayAdapter.createFromResource (PersonalInfoActivity.this, R.array.kuaiji, android.R.layout.simple_spinner_item); 
+                }else if(pro.equals("金融学院")){ 
+                	majorAdapter = ArrayAdapter.createFromResource (PersonalInfoActivity.this, R.array.jinrong, android.R.layout.simple_spinner_item); 
+                } 
+                //绑定数据到Spinner(City)上 
+                majorSpinner.setAdapter(majorAdapter); 
+            } 
+
+               @Override 
+               public void onNothingSelected(AdapterView<?> parent) { 
+                
+               } 
+                   
+        }); 
 	}
 
 	//使用XML形式操作
@@ -163,102 +189,54 @@ public class PersonalInfoActivity extends Activity {
 	 * 判断用户注册输入是否规范 录入信息验证 验证是否通过
 	 */
 
-	private boolean registerIsSuccsee(){
+	private boolean ifRegisterSuccess(){
     	//获取用户输入的信息
     	userName=userNameEditText.getText().toString();
-    	Email=emailEditText.getText().toString();
-    	if("".equals(userName)||"".equals(Email)){
-    		//用户输入用户名为空
-    		Toast.makeText(PersonalInfoActivity.this, "用户名或邮箱不能为空，为便于联系，请大家谅解!", Toast.LENGTH_SHORT).show();
+    	Email=emailEditText.getText().toString();	
+    	sex=sexSpinner.getSelectedItem().toString();
+    	academy=academySpinner.getSelectedItem().toString();
+    	major=majorSpinner.getSelectedItem().toString();
+    	grade=gradeSpinner.getSelectedItem().toString();
+    	phoneNumber=phoneNumberEditText.getText().toString();
+    	homeTown=homeTownEditText.getText().toString();
+    	QQ=QQEditText.getText().toString();
+    	graduatePlan=graduatePlanSpinner.getSelectedItem().toString();
+    	
+    	if("".equals(userName)){
+    		//用户输入用户名
+    		Toast.makeText(PersonalInfoActivity.this, "真实姓名不能为空", Toast.LENGTH_SHORT).show();
+    		//userNameEditText.setText("用户名不能为空");
+    		//flag=false;
     		return false;
-    	}else 
-    		return true;
+    	}else if (!("".equals(Email))&&!EmailFormat(Email)) {
+    		Toast.makeText(PersonalInfoActivity.this, "邮箱格式不正确", Toast.LENGTH_LONG).show();
+    		//flag=false;
+    		return false;
+        }else if (!("".equals(phoneNumber))&&!PhoneFormat(phoneNumber)) {
+    		Toast.makeText(PersonalInfoActivity.this, "手机号码格式不正确", Toast.LENGTH_LONG).show();
+    		//flag=false;
+    		return false;
+        }else{
+        	//return flag;
+        	Toast.makeText(PersonalInfoActivity.this, "个人资料注册成功", Toast.LENGTH_SHORT).show();
+        	return true;
+        }
     }
 	
-
-	/**
-	 * 注册
-	 */
-	private void register() {
-		userName = userNameEditText.getText().toString();
-		
-		httpStr = "http://";
-		postStr = httpStr + serverIp + ":" + serverPort
-				+ "/RegisterAndLogin/register";
-		questStr = "{REGISTER:{username:'" + userName + "'}}";
-		System.out.println("====questStr====" + questStr);
-		System.out.println("====postStr====" + postStr);
-		try {
-			HttpParams httpParams = new BasicHttpParams();
-			// 设置连接超时
-			int timeoutConnection = 3000;
-			HttpConnectionParams.setConnectionTimeout(httpParams,
-					timeoutConnection);
-			DefaultHttpClient httpClient = new DefaultHttpClient(httpParams);
-			HttpPost httpPost = new HttpPost(postStr);
-			List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-			nvps.add(new BasicNameValuePair("username", userName));
-			httpPost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
-			HttpResponse response = httpClient.execute(httpPost);
-			HttpEntity entity = response.getEntity();
-			InputStream is=entity.getContent();
-			String isUser = ConvertStreamToString(is);
-			
-			System.out.println(isUser);
-			if("success".equals(isUser)){
-				//表示用户注册成功
-				AlertDialog.Builder builder=new Builder(PersonalInfoActivity.this);
-				builder.setMessage("恭喜你！注册成功");
-				builder.setTitle("提示");
-				 builder.setPositiveButton("确认", new OnClickListener() {
-					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						Intent i=new Intent(PersonalInfoActivity.this,MainActivity.class);
-						dialog.dismiss();
-						startActivity(i);
-					}
-				}).show();
-			}else if("userExist".equals(isUser)){
-				//用户已经被注册
-				AlertDialog.Builder builder=new Builder(PersonalInfoActivity.this);
-				builder.setMessage("抱歉！该用户已被注册！");
-				builder.setTitle("提示");
-				builder.setPositiveButton("确认", new OnClickListener() {
-					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-					}
-				}).show();
-			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		
-		}
-	}
-	// 读取字符流
-	public String ConvertStreamToString(InputStream is) {
-		StringBuffer sb = new StringBuffer();
-		BufferedReader br = new BufferedReader(new InputStreamReader(is));
-		String returnStr = "";
-		try {
-			while ((returnStr = br.readLine()) != null) {
-				sb.append(returnStr);
-			}
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		final String result = sb.toString();
-
-		System.out.println(result);
-		return result;
-	}
+	//邮箱模式匹配
+    private boolean EmailFormat(String Email) {//邮箱判断正则表达式
+    	Pattern EmailPattern = Pattern.compile("\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*");
+        Matcher EmailM = EmailPattern.matcher(Email);
+    	return EmailM.matches();
+    }
+    
+    //电话号码模式匹配
+    private boolean PhoneFormat(String phone) {//电话判断正则表达式
+    	if(phone.length()!=11){
+    		return false;
+    	}else
+    		return true;
+    }
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -267,15 +245,14 @@ public class PersonalInfoActivity extends Activity {
 		return true;
 	}
 	
-	private void init() {	 
+	private void post() {	 
 		 requestQueue = Volley.newRequestQueue(this);    
 		 getJson();
 		 
 		 //获取输入的数据，然后提交到后台
 	 }
 	 
-	
-	private void getJson(){
+	 void getJson(){  
     	//��ʼ��volley
     		 
     	 String url = "http://192.168.20.1:8080/xiaoyuantong/userAction!reg.action";
@@ -286,15 +263,17 @@ public class PersonalInfoActivity extends Activity {
     	  
         // Map<String, String> map = new HashMap<String, String>();
     	  try {
-			jsonObject.put("name", "张三");
-			jsonObject.put("sex", "女");
-			jsonObject.put("college", "会计学院");
-			jsonObject.put("major", "会计学");
-			jsonObject.put("grade", "大三");
-			jsonObject.put("mail", "女");
-			jsonObject.put("tel", "女");
-			jsonObject.put("qq", "女");
-			jsonObject.put("hometown", "女");
+			jsonObject.put("name", userName);
+			jsonObject.put("sex", sex);
+			jsonObject.put("college", academy);
+			jsonObject.put("major",major);
+			jsonObject.put("grade", grade);
+			jsonObject.put("mail", Email);
+			jsonObject.put("tel", phoneNumber);
+			jsonObject.put("qq", QQ);
+			jsonObject.put("hometown", homeTown);
+			//加了毕业计划
+			jsonObject.put("graduatePlan", graduatePlan);
 		} catch (JSONException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -311,9 +290,9 @@ public class PersonalInfoActivity extends Activity {
                            Log.e("bbb", response.toString());
                       
                            //根据前面的标注获取字符串
-							Object it = response.opt("success");
+						/*	Object it = response.opt("success");
 							
-							Log.e("success",it.toString());
+							Log.e("success",it.toString());*/
 
                                }
                        

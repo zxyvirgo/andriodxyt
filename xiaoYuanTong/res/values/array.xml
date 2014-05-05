@@ -5,10 +5,23 @@
        <item>男</item>
     </string-array>
     <string-array name="academy">
-       <item>学院</item>
+       <item>信息与安全工程学院</item>
+       <item>会计学院</item>
+       <item>金融学院</item>
     </string-array>
-    <string-array name="major">
-       <item>专业</item>
+    <string-array name="xinxi">
+       <item>信息管理与信息系统</item>
+       <item>电子商务</item>
+       <item>信息安全</item>
+    </string-array>
+    <string-array name="kuaiji">
+       <item>会计学</item>
+       <item>财务管理</item>
+       <item>成本管理</item>
+    </string-array>
+    <string-array name="jinrong">
+       <item>金融学</item>
+       <item>金融工程</item>
     </string-array>
     <string-array name="grade">
        <item>2010</item>
@@ -30,7 +43,9 @@
        <item>其他</item>
     </string-array>
     <string-array name="twoClass1">
-       <item>学院</item>
+       <item>信息与安全工程学院</item>
+       <item>会计学院</item>
+       <item>金融学院</item>
     </string-array>
     <string-array name="twoClass2">
        <item>公共课</item>
@@ -45,7 +60,9 @@
        <item>考博</item>
     </string-array>
     <string-array name="threeClass">
-       <item>学院对应的专业</item>
+      <item>信息管理与信息系统</item>
+      <item>电子商务</item>
+      <item>信息安全</item>
     </string-array>
     <string-array name="fourClass">
        <item>大一</item>

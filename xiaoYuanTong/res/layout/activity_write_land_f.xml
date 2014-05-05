@@ -14,7 +14,6 @@
                android:id="@+id/trTable1"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content" >
-               
                <!--标签：找物还是招物-->
                <TextView
                  android:id="@+id/tvLandFTip"

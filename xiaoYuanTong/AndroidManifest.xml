@@ -18,20 +18,21 @@
         <activity
             android:name="com.example.xiaoyuantong.MainActivity"
             android:label="@string/app_name" >
-              <intent-filter>
+          
+        </activity>
+        <activity
+            android:name="com.example.xiaoyuantong.LoginActivity"
+            android:label="@string/title_activity_login" >
+               <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.xiaoyuantong.LoginActivity"
-            android:label="@string/title_activity_login" >
-        </activity>
-        <activity
             android:name="com.example.xiaoyuantong.PersonalInfoActivity"
             android:label="@string/title_activity_personal_info" >
-          
+             
         </activity>
         <activity
             android:name="com.example.xiaoyuantong.MainTabActivity"
@@ -44,6 +45,7 @@
         <activity
             android:name="com.example.xiaoyuantong.NewsActivity"
             android:label="@string/title_activity_news" >
+          
         </activity>
         <activity
             android:name="com.example.xiaoyuantong.TopicActivity"
@@ -89,6 +91,10 @@
         <activity
             android:name="com.example.xiaoyuantong.WriteLAndFActivity"
             android:label="@string/title_activity_write_land_f" >
+        </activity>
+         <activity
+            android:name="com.example.xiaoyuantong.WriteNewsActivity"
+            android:label="@string/title_activity_write_news" >
         </activity>
     </application>
 

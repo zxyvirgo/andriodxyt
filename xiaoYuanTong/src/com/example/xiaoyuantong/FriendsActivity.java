@@ -8,6 +8,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ExpandableListActivity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -187,8 +189,17 @@ public class FriendsActivity extends ExpandableListActivity {
 
 	private void getJson() {
 		// ��ʼ��volley
-
-		String url = "http://192.168.20.1:8080/xiaoyuantong/groupAction!GroupList.action?id=1";
+		//最新添加的获取本地ID
+		SharedPreferences nu=getSharedPreferences("number",0);//login是存储文件  
+		String number=nu.getString("studentId", "");
+	//	System.out.println(number+"!");
+		Log.v("cola","data="+number);
+		
+		//sp = getSharedPreferences("users",Context.MODE_WORLD_READABLE); 
+	//	Context ctx = LoginActivity.this;
+	//	SharedPreferences sp = ctx.getSharedPreferences("SP", MODE_PRIVATE);
+		String userid =number;
+		String url = "http://192.168.20.1:8080/xiaoyuantong/groupAction!GroupList.action?id="+userid;
 
 		// ������ʹ��volley
 		

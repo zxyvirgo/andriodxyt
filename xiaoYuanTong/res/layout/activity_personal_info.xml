@@ -71,14 +71,12 @@
    			        	android:id="@+id/academy"
    			        	android:layout_width="80dp"
    			        	android:layout_height="wrap_content"
-   			        	android:entries="@array/academy"
    			        	android:prompt="@string/academy" />
 
     				<Spinner
     			    	android:id="@+id/major"
     			    	android:layout_width="112dp"
     			    	android:layout_height="wrap_content"
-    			    	android:entries="@array/major"
     			    	android:prompt="@string/major" />
 
 			   </LinearLayout>
